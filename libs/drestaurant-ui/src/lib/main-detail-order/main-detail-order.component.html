@@ -1,0 +1,19 @@
+<d-restaurant-frontend-main-detail title="Order detail">
+  <mat-tab-group>
+    <mat-tab label="Properties">
+      <mat-card class="mat-elevation-z0">
+        <mat-card-content *ngIf="orderObservable | async as order else noDetailData">
+          {{order.state}}
+          <ul>
+            <li *ngFor="let orderItem of order.lineItems">
+              MenuId: {{orderItem.manuId}}; Name: {{orderItem.name}}; Price: {{orderItem.price}}; Quantity: {{orderItem.quantity}}
+            </li>
+          </ul>
+        </mat-card-content>
+        <ng-template #noDetailData>No Data Available</ng-template>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Actions">
+    </mat-tab>
+  </mat-tab-group>
+</d-restaurant-frontend-main-detail>

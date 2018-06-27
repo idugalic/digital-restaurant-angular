@@ -1,0 +1,10 @@
+<d-restaurant-frontend-main-list>
+  <ul *ngIf="restaurants | async as restaurantsS else noData">
+    <li *ngFor="let restaurant of restaurantsS.list">
+      <a [routerLink]="[restaurant.id]">{{ restaurant.name }}-{{ restaurant.id }}</a>
+    </li>
+  </ul>
+  <ng-template #noData>No Data Available</ng-template>
+  <button color="accent" mat-raised-button [routerLink]="'action/new'"> Create Restaurant</button>
+
+</d-restaurant-frontend-main-list>

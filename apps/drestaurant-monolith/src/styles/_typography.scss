@@ -1,0 +1,263 @@
+@import "~@angular/material/theming";
+/************************************** FONT DEFINITION **************************************/
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+/************************************** TEXT STYLES **************************************/
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.font {
+  &-w {
+    &-thin {
+      font-weight: 100;
+      &-im {
+        font-weight: 100 !important;
+      }
+    }
+    &-light {
+      font-weight: 300;
+      &-im {
+        font-weight: 300 !important;
+      }
+    }
+    &-regular {
+      font-weight: 400;
+      &-im {
+        font-weight: 400 !important;
+      }
+    }
+    &-medium {
+      font-weight: 500;
+      &-im {
+        font-weight: 500 !important;
+      }
+    }
+    &-bold {
+      font-weight: 700;
+      &-im {
+        font-weight: 700 !important;
+      }
+    }
+    &-black {
+      font-weight: 900;
+      &-im {
+        font-weight: 900 !important;
+      }
+    }
+  }
+}
+
+@mixin defaultFontMargin {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+h1, .h1 {
+  @extend .font-w-regular;
+  font-size: 70px;
+  line-height: 70px;
+  @include defaultFontMargin;
+}
+html body .md-display-4 {
+  font-size: 70px;
+  line-height: 70px;
+}
+
+h2, .h2 {
+  @extend .font-w-regular;
+  font-size: 56px;
+  line-height: 56px;
+  @include defaultFontMargin;
+}
+
+h3, .h3 {
+  @extend .font-w-regular;
+  font-size: 45px;
+  line-height: 48px;
+  @include defaultFontMargin;
+}
+
+h4, .h4 {
+  @extend .font-w-regular;
+  font-size: 34px;
+  line-height: 40px;
+  @include defaultFontMargin;
+}
+
+h5, .h5 {
+  @extend .font-w-regular;
+  font-size: 24px;
+  line-height: 32px;
+  @include defaultFontMargin;
+}
+
+h6, .h6 {
+  @extend .font-w-medium;
+  font-size: 20px;
+  line-height: 20px;
+  @include defaultFontMargin;
+}
+
+mark {
+  padding: 0 4px;
+  border-radius: 2px;
+  @include mat-elevation(1);
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.blockquote {
+  padding: .5rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    @include mat-elevation(3);
+  }
+  &.blockquote-reverse {
+    padding-right: 1rem;
+    padding-left: 0;
+    text-align: right;
+    border-left: 0;
+    &:before {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+.blockquote-footer {
+  display: block;
+  font-size: 80%;
+  font-style: italic;
+  font-weight: 300;
+}
+
+
+
+

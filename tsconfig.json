@@ -1,0 +1,46 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@d-restaurant-frontend/*": [
+        "libs/*"
+      ],
+      "@d-restaurant-frontend/drestaurant-customer": [
+        "libs/drestaurant-customer/src/index.ts"
+      ],
+      "@d-restaurant-frontend/drestaurant-courier": [
+        "libs/drestaurant-courier/src/index.ts"
+      ],
+      "@d-restaurant-frontend/drestaurant-order": [
+        "libs/drestaurant-order/src/index.ts"
+      ],
+      "@d-restaurant-frontend/drestaurant-restaurant": [
+        "libs/drestaurant-restaurant/src/index.ts"
+      ],
+      "@d-restaurant-frontend/drestaurant-shared": [
+        "libs/drestaurant-shared/src/index.ts"
+      ],
+      "@d-restaurant-frontend/drestaurant-ui": [
+        "libs/drestaurant-ui/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

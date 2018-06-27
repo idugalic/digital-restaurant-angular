@@ -1,0 +1,14 @@
+<d-restaurant-frontend-main-detail title="Courier detail">
+  <mat-tab-group>
+    <mat-tab label="Properties">
+      <mat-card class="mat-elevation-z0">
+        <mat-card-content *ngIf="courierObservable | async as courier else noDetailData">
+            {{courier.firstName}} {{courier.lastName}}
+        </mat-card-content>
+        <ng-template #noDetailData>No Data Available</ng-template>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Actions">
+    </mat-tab>
+  </mat-tab-group>
+</d-restaurant-frontend-main-detail>

@@ -1,0 +1,25 @@
+.app-footer {
+    text-align: center;
+  }
+
+a {
+  transition: padding 0.5s;
+  display: inline-block;
+  padding: 15px 5px;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  span {
+    display: inline-block;
+    width: 90px;
+    padding: 0 0 0 5px;
+    overflow: hidden;
+    text-align: left;
+    white-space: nowrap;
+    transition: width 0.5s;
+  }
+
+}
+

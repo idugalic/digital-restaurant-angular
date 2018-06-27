@@ -1,0 +1,14 @@
+<d-restaurant-frontend-main-list>
+  <ul *ngIf="orders | async as ordersS else noData">
+    <li *ngFor="let order of ordersS.list">
+      <a [routerLink]="[order.id]">{{ order.state }}-{{ order.id }}</a>
+      <ul>
+        <li *ngFor="let orderItem of order.lineItems">
+          MenuId: {{orderItem.manuId}}; Name: {{orderItem.name}}; Price: {{orderItem.price}}; Quantity: {{orderItem.quantity}}
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ng-template #noData>No Data Available</ng-template>
+  <button color="accent" mat-raised-button [routerLink]="'action/new'"> Create Order</button>
+</d-restaurant-frontend-main-list>

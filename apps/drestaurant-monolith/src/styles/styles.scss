@@ -1,0 +1,45 @@
+@import '~@angular/material/theming';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Import our custom theme
+@import 'theme';
+@import '../../../../libs/drestaurant-ui/src/lib/side-menu-item/side-menu-item.component.theme';
+@import '../../../../libs/drestaurant-ui/src/lib/header/header.component.theme';
+@import '../../../../libs/drestaurant-ui/src/lib/footer/footer.component.theme';
+@import '../../../../libs/drestaurant-ui/src/lib/main-list-courier/main-list-courier.component.theme';
+@import '../../../../libs/drestaurant-ui/src/lib/main-list-customer/main-list-customer.component.theme';
+@import '../../../../libs/drestaurant-ui/src/lib/main-list-restaurant/main-list-restaurant.component.theme';
+
+@import 'material_icons';
+@import 'typography';
+
+
+// You only have to add additional componenets here (instead of in every theme class)
+@mixin custom-components-theme($theme) {
+  @include side-menu-item-component-theme($theme);
+  @include header-component-theme($theme);
+  @include footer-component-theme($theme);
+  @include main-list-courier-component-theme($theme);
+  @include main-list-customer-component-theme($theme);
+  @include main-list-restaurant-component-theme($theme);
+
+  //include other components here
+}
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component that you are using.
+@include angular-material-theme($candy-app-theme);
+@include custom-components-theme($candy-app-theme);
+
+
+a {
+  text-decoration:none;
+}
+
+body {
+  margin: 0px;
+}
+

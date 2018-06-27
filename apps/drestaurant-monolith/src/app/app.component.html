@@ -1,0 +1,12 @@
+<div class="outer-sidenav-content">
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #mySidenav class="sidenav" mode="push">
+            <d-restaurant-frontend-side-menu [nav]="mySidenav"></d-restaurant-frontend-side-menu>
+        </mat-sidenav>
+        <d-restaurant-frontend-header [title]="title" [nav]="mySidenav" sourceCodeUrl="https://github.com/idugalic/digital-restaurant-angular"></d-restaurant-frontend-header>
+        <div class="inner-sidenav-content">
+            <router-outlet></router-outlet>
+            <d-restaurant-frontend-footer></d-restaurant-frontend-footer>
+        </div>
+    </mat-sidenav-container>
+</div>

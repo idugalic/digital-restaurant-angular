@@ -1,0 +1,29 @@
+{
+  "npmScope": "d-restaurant-frontend",
+  "projects": {
+    "drestaurant-monolith": {
+      "tags": []
+    },
+    "drestaurant-monolith-e2e": {
+      "tags": []
+    },
+    "drestaurant-customer": {
+      "tags": []
+    },
+    "drestaurant-courier": {
+      "tags": []
+    },
+    "drestaurant-order": {
+      "tags": []
+    },
+    "drestaurant-restaurant": {
+      "tags": []
+    },
+    "drestaurant-shared": {
+      "tags": []
+    },
+    "drestaurant-ui": {
+      "tags": []
+    }
+  }
+}

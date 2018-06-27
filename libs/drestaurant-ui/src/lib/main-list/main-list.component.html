@@ -1,0 +1,9 @@
+<mat-card class="mat-elevation-z0">
+  <mat-card-title *ngIf="title">{{title}}</mat-card-title>
+  <mat-card-content>
+    <ng-content> </ng-content>
+  </mat-card-content>
+  <mat-card-actions>
+    <ng-content select="button"> </ng-content>
+  </mat-card-actions>
+</mat-card>

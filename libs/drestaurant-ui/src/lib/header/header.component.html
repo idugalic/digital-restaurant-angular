@@ -1,0 +1,15 @@
+<header>
+  <mat-toolbar color="primary">
+
+     <button mat-icon-button (click)="toggleSideNav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span><a routerLink="/">{{title}}</a></span>
+
+    <span class="fill-remaining-space"></span>
+    <a mat-mini-fab href="{{sourceCodeUrl}}" target="_blank">
+      <mat-icon>code</mat-icon>
+    </a>
+  </mat-toolbar>
+</header>

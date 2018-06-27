@@ -1,0 +1,14 @@
+<d-restaurant-frontend-main-detail title="Customer detail">
+  <mat-tab-group>
+    <mat-tab label="Properties">
+      <mat-card class="mat-elevation-z0">
+        <mat-card-content *ngIf="customerObservable | async as customer else noDetailData">
+            {{customer.firstName}} {{customer.lastName}}
+        </mat-card-content>
+        <ng-template #noDetailData>No Data Available</ng-template>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Actions">
+    </mat-tab>
+  </mat-tab-group>
+</d-restaurant-frontend-main-detail>

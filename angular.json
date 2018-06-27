@@ -1,0 +1,297 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "drestaurant-monolith": {
+      "root": "apps/drestaurant-monolith/",
+      "sourceRoot": "apps/drestaurant-monolith/src",
+      "projectType": "application",
+      "prefix": "d-restaurant-frontend",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/drestaurant-monolith",
+            "index": "apps/drestaurant-monolith/src/index.html",
+            "main": "apps/drestaurant-monolith/src/main.ts",
+            "polyfills": "apps/drestaurant-monolith/src/polyfills.ts",
+            "tsConfig": "apps/drestaurant-monolith/tsconfig.app.json",
+            "assets": [
+              "apps/drestaurant-monolith/src/favicon.ico",
+              "apps/drestaurant-monolith/src/assets"
+            ],
+            "styles": [
+              "apps/drestaurant-monolith/src/styles/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/drestaurant-monolith/src/environments/environment.ts",
+                  "with": "apps/drestaurant-monolith/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "drestaurant-monolith:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "drestaurant-monolith:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "drestaurant-monolith:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/drestaurant-monolith/src/test.ts",
+            "polyfills": "apps/drestaurant-monolith/src/polyfills.ts",
+            "tsConfig": "apps/drestaurant-monolith/tsconfig.spec.json",
+            "karmaConfig": "apps/drestaurant-monolith/karma.conf.js",
+            "styles": [
+              "apps/drestaurant-monolith/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/drestaurant-monolith/src/favicon.ico",
+              "apps/drestaurant-monolith/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/drestaurant-monolith/tsconfig.app.json",
+              "apps/drestaurant-monolith/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "drestaurant-monolith-e2e": {
+      "root": "apps/drestaurant-monolith-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/drestaurant-monolith-e2e/protractor.conf.js",
+            "devServerTarget": "drestaurant-monolith:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/drestaurant-monolith-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "drestaurant-customer": {
+      "root": "libs/drestaurant-customer",
+      "sourceRoot": "libs/drestaurant-customer/src",
+      "projectType": "library",
+      "prefix": "d-restaurant-frontend",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/drestaurant-customer/src/test.ts",
+            "tsConfig": "libs/drestaurant-customer/tsconfig.spec.json",
+            "karmaConfig": "libs/drestaurant-customer/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/drestaurant-customer/tsconfig.lib.json",
+              "libs/drestaurant-customer/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "drestaurant-courier": {
+      "root": "libs/drestaurant-courier",
+      "sourceRoot": "libs/drestaurant-courier/src",
+      "projectType": "library",
+      "prefix": "d-restaurant-frontend",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/drestaurant-courier/src/test.ts",
+            "tsConfig": "libs/drestaurant-courier/tsconfig.spec.json",
+            "karmaConfig": "libs/drestaurant-courier/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/drestaurant-courier/tsconfig.lib.json",
+              "libs/drestaurant-courier/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "drestaurant-order": {
+      "root": "libs/drestaurant-order",
+      "sourceRoot": "libs/drestaurant-order/src",
+      "projectType": "library",
+      "prefix": "d-restaurant-frontend",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/drestaurant-order/src/test.ts",
+            "tsConfig": "libs/drestaurant-order/tsconfig.spec.json",
+            "karmaConfig": "libs/drestaurant-order/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/drestaurant-order/tsconfig.lib.json",
+              "libs/drestaurant-order/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "drestaurant-restaurant": {
+      "root": "libs/drestaurant-restaurant",
+      "sourceRoot": "libs/drestaurant-restaurant/src",
+      "projectType": "library",
+      "prefix": "d-restaurant-frontend",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/drestaurant-restaurant/src/test.ts",
+            "tsConfig": "libs/drestaurant-restaurant/tsconfig.spec.json",
+            "karmaConfig": "libs/drestaurant-restaurant/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/drestaurant-restaurant/tsconfig.lib.json",
+              "libs/drestaurant-restaurant/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "drestaurant-shared": {
+      "root": "libs/drestaurant-shared",
+      "sourceRoot": "libs/drestaurant-shared/src",
+      "projectType": "library",
+      "prefix": "d-restaurant-frontend",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/drestaurant-shared/src/test.ts",
+            "tsConfig": "libs/drestaurant-shared/tsconfig.spec.json",
+            "karmaConfig": "libs/drestaurant-shared/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/drestaurant-shared/tsconfig.lib.json",
+              "libs/drestaurant-shared/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "drestaurant-ui": {
+      "root": "libs/drestaurant-ui",
+      "sourceRoot": "libs/drestaurant-ui/src",
+      "projectType": "library",
+      "prefix": "d-restaurant-frontend",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/drestaurant-ui/src/test.ts",
+            "tsConfig": "libs/drestaurant-ui/tsconfig.spec.json",
+            "karmaConfig": "libs/drestaurant-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/drestaurant-ui/tsconfig.lib.json",
+              "libs/drestaurant-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/schematics"
+  },
+  "defaultProject": "drestaurant-monolith"
+}

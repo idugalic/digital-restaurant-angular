@@ -1,0 +1,27 @@
+<d-restaurant-frontend-main-list>
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <a [routerLink]="[element.id]">{{ element.id }}</a> </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <mat-header-cell *matHeaderCellDef> FirstName </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.firstName }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef> LastName </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lastName}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator (page)="pageChanged($event)" [pageSizeOptions]="[5, 10, 15, 35, 50, 100, 200]" [length]="dataSource?.page?.totalElements"
+    [pageIndex]="dataSource?.page?.number" [pageSize]="dataSource?.page?.size">
+  </mat-paginator>
+
+  <button color="accent" mat-raised-button [routerLink]="'action/new'"> Create Customer</button>
+</d-restaurant-frontend-main-list>
