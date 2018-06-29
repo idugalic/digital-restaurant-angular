@@ -12,6 +12,7 @@ import { CourierOrderMarkAsDeliveredComponent } from './courier-order-mark-as-de
 import { DrestaurantSharedModule } from '@d-restaurant-frontend/drestaurant-shared';
 import { HttpClientModule } from '@angular/common/http';
 import { DrestaurantUiModule } from '@d-restaurant-frontend/drestaurant-ui';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export const drestaurantCourierRoutes: Route[] = [
   {
@@ -61,7 +62,8 @@ export const drestaurantCourierRoutes: Route[] = [
     RouterModule,
     DrestaurantSharedModule,
     DrestaurantUiModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [
     DrestaurantCourierComponent,

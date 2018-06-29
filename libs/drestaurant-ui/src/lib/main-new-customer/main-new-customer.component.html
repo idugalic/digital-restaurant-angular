@@ -1,0 +1,16 @@
+<d-restaurant-frontend-main-new title="New Customer">
+  <form [formGroup]="form" (ngSubmit)="submit(form)">
+    <mat-form-field floatingPlaceholder=true style="width: 100%">
+      <input matInput placeholder="First Name" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field floatingPlaceholder=true style="width: 100%">
+      <input matInput placeholder="Last Name" formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field floatingPlaceholder=true style="width: 100%">
+      <input matInput placeholder="Order Limit" formControlName="orderLimit">
+    </mat-form-field>
+    <p>
+      <button mat-raised-button color="accent" type="submit" [disabled]="!form.valid">Submit</button>
+    </p>
+  </form>
+</d-restaurant-frontend-main-new>

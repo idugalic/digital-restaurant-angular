@@ -38,6 +38,9 @@ import { MainListCourierComponent } from './main-list-courier/main-list-courier.
 import { MainListCustomerComponent } from './main-list-customer/main-list-customer.component';
 import { MainListRestaurantComponent } from '@d-restaurant-frontend/drestaurant-ui/src/lib/main-list-restaurant/main-list-restaurant.component';
 import { MainListOrderComponent } from '@d-restaurant-frontend/drestaurant-ui/src/lib/main-list-order/main-list-order.component';
+import { MainNewCourierComponent } from '@d-restaurant-frontend/drestaurant-ui/src/lib/main-new-courier/main-new-courier.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MainNewCustomerComponent } from '@d-restaurant-frontend/drestaurant-ui/src/lib/main-new-customer/main-new-customer.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -60,7 +63,8 @@ import { MainListOrderComponent } from '@d-restaurant-frontend/drestaurant-ui/sr
     MatTableModule,
     MatOptionModule,
     MatSelectModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   declarations: [
     FooterComponent,
@@ -78,7 +82,9 @@ import { MainListOrderComponent } from '@d-restaurant-frontend/drestaurant-ui/sr
     MainListCourierComponent,
     MainListCustomerComponent,
     MainListRestaurantComponent,
-    MainListOrderComponent
+    MainListOrderComponent,
+    MainNewCourierComponent,
+    MainNewCustomerComponent
   ],
   exports: [
     FooterComponent,
@@ -87,7 +93,7 @@ import { MainListOrderComponent } from '@d-restaurant-frontend/drestaurant-ui/sr
     SideMenuItemComponent,
     MainComponent,
     //MainDetailComponent,
-    MainListComponent,
+    //MainListComponent,
     MainNewComponent,
     MainDetailCustomerComponent,
     MainDetailCourierComponent,
@@ -96,7 +102,9 @@ import { MainListOrderComponent } from '@d-restaurant-frontend/drestaurant-ui/sr
     MainListCourierComponent,
     MainListCustomerComponent,
     MainListRestaurantComponent,
-    MainListOrderComponent
+    MainListOrderComponent,
+    MainNewCourierComponent,
+    MainNewCustomerComponent
   ]
 })
 export class DrestaurantUiModule {}

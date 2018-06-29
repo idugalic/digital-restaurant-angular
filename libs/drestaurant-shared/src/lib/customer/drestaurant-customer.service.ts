@@ -13,7 +13,7 @@ export class DrestaurantCustomerService {
   constructor(
     private http: HttpClient,
     @Inject('baseURL') private baseUrl: string
-  ) {}
+  ) { }
 
   private extractListData(res) {
     const model: CustomersModel = new CustomersModel();
@@ -45,8 +45,18 @@ export class DrestaurantCustomerService {
     return this.http.get(url).map(this.extractSingleData);
   }
 
-  public createCustomer(project: CustomerModel): Observable<any> {
-    const url: string = this.baseUrl + '/query/customers';
-    return this.http.post(url, project);
+  public createCustomer(customer: CustomerModel): Observable<any> {
+    const url: string = this.baseUrl + '/command/customer/createcommand';
+    const name: CustomerName = new CustomerName(customer.firstName, customer.lastName);
+    const customerRequest: CreateCustomerRequest = new CreateCustomerRequest(name, customer.orderLimit);
+    return this.http.post(url, customerRequest);
   }
 }
+
+export class CreateCustomerRequest {
+  constructor(public name: CustomerName, public orderLimit: number) { }
+}
+export class CustomerName {
+  constructor(public firstName: string, public lastName: string) { }
+}
+

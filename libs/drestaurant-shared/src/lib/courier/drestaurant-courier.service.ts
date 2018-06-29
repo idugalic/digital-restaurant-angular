@@ -13,7 +13,7 @@ export class DrestaurantCourierService {
   constructor(
     private http: HttpClient,
     @Inject('baseURL') private baseUrl: string
-  ) {}
+  ) { }
 
   private extractListData(res) {
     const model: CouriersModel = new CouriersModel();
@@ -47,8 +47,16 @@ export class DrestaurantCourierService {
     return this.http.get(url).map(this.extractSingleData);
   }
 
-  public createCourier(project: CourierModel): Observable<any> {
-    const url: string = this.baseUrl + '/query/couriers';
-    return this.http.post(url, project);
+  public createCourier(courier: CourierModel): Observable<any> {
+    const url: string = this.baseUrl + '/command/courier/createcommand';
+    const name: CourierName = new CourierName(courier.firstName, courier.lastName);
+    const courierRequest: CreateCourierRequest = new CreateCourierRequest(name, courier.maxNumberOfActiveOrders);
+    return this.http.post(url, courierRequest);
   }
+}
+export class CreateCourierRequest {
+  constructor(public name: CourierName, public maxNumberOfActiveOrders: number) { }
+}
+export class CourierName {
+  constructor(public firstName: string, public lastName: string) { }
 }
