@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DrestaurantCourierService, CourierModel } from '@d-restaurant-frontend/drestaurant-shared';
+import { DrestaurantCourierService, CourierModel, EventManager, MyEvent } from '@d-restaurant-frontend/drestaurant-shared';
 
 @Component({
   selector: 'd-restaurant-frontend-courier-create',
@@ -10,7 +10,7 @@ import { DrestaurantCourierService, CourierModel } from '@d-restaurant-frontend/
 export class CourierCreateComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private courierService: DrestaurantCourierService, private formBuilder: FormBuilder) { }
+  constructor(private courierService: DrestaurantCourierService, private formBuilder: FormBuilder, private eventManager: EventManager) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -30,7 +30,10 @@ export class CourierCreateComponent implements OnInit {
   }
 
   private onSaveSuccess(result) {
-    //Do something smart
+    this.eventManager.broadcast({
+      name: MyEvent.COURIER_LIST_MODIFICATION,
+      content: 'OK'
+    });
   }
 
   private onSaveError() {

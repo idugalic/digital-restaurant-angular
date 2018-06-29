@@ -9,6 +9,8 @@ import { PageEvent } from '@angular/material';
 import { CourierModel } from './courier.model';
 import { DrestaurantCourierService } from './drestaurant-courier.service';
 import { PageModel } from './../page.model';
+import { EventManager } from './../event-manager.service';
+import { MyEvent } from './../event.model';
 
 export class CourierListDataSource extends DataSource<CourierModel> {
   page: PageModel;
@@ -16,7 +18,7 @@ export class CourierListDataSource extends DataSource<CourierModel> {
   constructor(
     private courierService: DrestaurantCourierService,
     private pageChange: Subject<PageEvent>,
-    //private eventManager: EventManager
+    private eventManager: EventManager
   ) {
     super();
   }
@@ -25,16 +27,16 @@ export class CourierListDataSource extends DataSource<CourierModel> {
   connect(): Observable<CourierModel[]> {
     const displayDataChanges = [
       this.pageChange,
-      // this.eventManager.observable.filter(
-      //   event => event.name === 'courierListModification'
-      // )
+      this.eventManager.observable.filter(
+        event => event.name === MyEvent.COURIER_LIST_MODIFICATION
+      )
     ];
 
     const startPageEvent = new PageEvent();
     startPageEvent.pageIndex = 0;
     startPageEvent.pageSize = 5;
 
-    /** Merging 'blogPostListModification' and 'page changed' streams **/
+    /** Merging 'courierListModification' and 'page changed' streams **/
     return Observable.merge(...displayDataChanges)
       .startWith(startPageEvent)
       .switchMap(event => {

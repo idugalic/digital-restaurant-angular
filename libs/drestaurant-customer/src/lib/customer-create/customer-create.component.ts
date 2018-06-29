@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DrestaurantCustomerService, CustomerModel } from '@d-restaurant-frontend/drestaurant-shared';
+import { DrestaurantCustomerService, CustomerModel, EventManager, MyEvent } from '@d-restaurant-frontend/drestaurant-shared';
 
 @Component({
   selector: 'd-restaurant-frontend-customer-create',
@@ -10,7 +10,7 @@ import { DrestaurantCustomerService, CustomerModel } from '@d-restaurant-fronten
 export class CustomerCreateComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private customerService: DrestaurantCustomerService, private formBuilder: FormBuilder) { }
+  constructor(private customerService: DrestaurantCustomerService, private formBuilder: FormBuilder, private eventManager: EventManager) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -30,7 +30,10 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   private onSaveSuccess(result) {
-    //Do something smart
+    this.eventManager.broadcast({
+      name: MyEvent.CUSTOMER_LIST_MODIFICATION,
+      content: 'OK'
+    });
   }
 
   private onSaveError() {

@@ -9,6 +9,8 @@ import { PageEvent } from '@angular/material';
 import { CustomerModel } from './customer.model';
 import { PageModel } from './../page.model';
 import { DrestaurantCustomerService } from './drestaurant-customer.service';
+import { EventManager } from './../event-manager.service';
+import { MyEvent } from './../event.model';
 
 export class CustomerListDataSource extends DataSource<CustomerModel> {
   page: PageModel;
@@ -16,7 +18,7 @@ export class CustomerListDataSource extends DataSource<CustomerModel> {
   constructor(
     private customerService: DrestaurantCustomerService,
     private pageChange: Subject<PageEvent>,
-    //private eventManager: EventManager
+    private eventManager: EventManager
   ) {
     super();
   }
@@ -25,16 +27,16 @@ export class CustomerListDataSource extends DataSource<CustomerModel> {
   connect(): Observable<CustomerModel[]> {
     const displayDataChanges = [
       this.pageChange,
-      // this.eventManager.observable.filter(
-      //   event => event.name === 'customerListModification'
-      // )
+      this.eventManager.observable.filter(
+        event => event.name === MyEvent.CUSTOMER_LIST_MODIFICATION
+      )
     ];
 
     const startPageEvent = new PageEvent();
     startPageEvent.pageIndex = 0;
     startPageEvent.pageSize = 5;
 
-    /** Merging 'blogPostListModification' and 'page changed' streams **/
+    /** Merging 'customerListModification' and 'page changed' streams **/
     return Observable.merge(...displayDataChanges)
       .startWith(startPageEvent)
       .switchMap(event => {

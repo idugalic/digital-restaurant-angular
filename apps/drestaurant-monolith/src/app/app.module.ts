@@ -27,6 +27,7 @@ import {
 } from '@d-restaurant-frontend/drestaurant-restaurant';
 import { DrestaurantUiModule } from '@d-restaurant-frontend/drestaurant-ui';
 import { environment } from '../environments/environment';
+import { EventManager } from '@d-restaurant-frontend/drestaurant-shared';
 
 @NgModule({
   declarations: [AppComponent],
@@ -53,6 +54,7 @@ import { environment } from '../environments/environment';
     )
   ],
   providers: [
+    EventManager,
     {
       provide: 'baseURL',
       useValue: environment.baseURL

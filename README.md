@@ -59,6 +59,8 @@ Routed feature modules don’t export anything because their components never ap
     - Managing courier information
     - A courier view of an order (managing the delivery of orders)
 
+#### Pub-Sub communication model
+The communication between routed (feature) components is event driven, and based on publish-subscribe model. For example a [customer-create.component](libs/drestaurant-customer/src/lib/customer-create/customer-create.component.ts) will trigger an event on successfull creation of a customer, and [customer-list.component](libs/drestaurant-customer/src/lib/customer-list/customer-list.component.ts) is subscribed to it, so it can re-fetch and refresh a list of customers.
 
 ### Widget (UI) feature modules
 A widget module makes components, directives, and pipes available to external modules. Many third-party UI component libraries are widget modules.
@@ -68,6 +70,11 @@ A widget module should consist entirely of declarations, most of them exported.
 A widget module should rarely have providers.
 
 Many, if not most UI Components, can be abstracted into a style guide or UI library for the project. Using a shared style guide for an organization or project improves reusability, increases the consistency between the different views that form a web application and encourages the communication between the different teams. It can also ensure that a unified brand is used across different products. To get ideas of component design and style guide maintainability I recommend Brad Frost’s book Atomic Design.
+
+#### Parent-Child communication model
+UI Components behave like pure functions taking in the data via @Input and emitting data via @Output. This allows the majority of our UI to not know the underlying implementation detail of where the data came from. For example a [side-menu-item.component](libs/drestaurant-ui/src/lib/side-menu-item/side-menu-item.component.ts) takes in a @Input of an item to display. This allows the side-menu-item.component component to have the only responsibility of rendering the item when the data is passed to it.
+
+There are downsides to this though. As the feature grows in complexity we may have a deeply nested UI  component structure. Since UI component events only bubble up one level at a time we will have to manually pass up to each parent component. Introducing other sub routed (feature) components (customer-list.component, customer-detail.component, customer-create.component) can help elevate this.
 
  - [UI module](libs/drestaurant-ui/src/lib/drestaurant-ui.module.ts)
 

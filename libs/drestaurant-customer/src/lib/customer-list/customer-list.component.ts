@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { DrestaurantCustomerService, CustomerListDataSource } from '@d-restaurant-frontend/drestaurant-shared';
+import { DrestaurantCustomerService, CustomerListDataSource, EventManager } from '@d-restaurant-frontend/drestaurant-shared';
 import { PageEvent } from '@angular/material';
 
 @Component({
@@ -12,14 +12,14 @@ export class CustomerListComponent implements OnInit {
   dataSource: CustomerListDataSource;
   pageChange: Subject<PageEvent>;
 
-  constructor(private customerService: DrestaurantCustomerService/*,  private eventManager: EventManager*/) { }
+  constructor(private customerService: DrestaurantCustomerService,  private eventManager: EventManager) { }
 
   ngOnInit() {
     this.pageChange = new Subject();
     this.dataSource = new CustomerListDataSource(
       this.customerService,
       this.pageChange,
-      //this.eventManager
+      this.eventManager
     );
   }
 

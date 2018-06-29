@@ -14,3 +14,5 @@ export * from './lib/customer/drestaurant-customer.service';
 export * from './lib/customer/customer-list.datasource';
 export * from './lib/restaurant/drestaurant-restaurant.service';
 export * from './lib/order/drestaurant-order.service';
+export * from './lib/event-manager.service';
+export * from './lib/event.model';
