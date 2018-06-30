@@ -1,4 +1,4 @@
-# d-restaurant-fe-angular
+# [projects](http://idugalic.github.io/projects)/d-restaurant-fe-angular
 
 This project is created for educational purposes only. There is no restaurant ;)
 
