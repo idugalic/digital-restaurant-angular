@@ -4,6 +4,7 @@ import { CustomerListComponent } from './customer-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { DrestaurantUiModule } from '@d-restaurant-frontend/drestaurant-ui';
+import { StompService, StompConfig, StompRService } from '@stomp/ng2-stompjs';
 
 describe('CustomerListComponent', () => {
   let component: CustomerListComponent;
@@ -18,6 +19,10 @@ describe('CustomerListComponent', () => {
           {
             provide: 'baseURL',
             useValue: 'baseURL'
+          },
+          {
+            provide: StompService,
+            useClass: StompRService
           }
         ]
       }).compileComponents();

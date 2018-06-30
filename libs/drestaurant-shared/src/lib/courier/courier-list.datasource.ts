@@ -11,6 +11,7 @@ import { DrestaurantCourierService } from './drestaurant-courier.service';
 import { PageModel } from './../page.model';
 import { EventManager } from './../event-manager.service';
 import { MyEvent } from './../event.model';
+import { StompService } from '@stomp/ng2-stompjs';
 
 export class CourierListDataSource extends DataSource<CourierModel> {
   page: PageModel;
@@ -18,7 +19,8 @@ export class CourierListDataSource extends DataSource<CourierModel> {
   constructor(
     private courierService: DrestaurantCourierService,
     private pageChange: Subject<PageEvent>,
-    private eventManager: EventManager
+    private eventManager: EventManager,
+    private stompService: StompService
   ) {
     super();
   }
@@ -26,6 +28,7 @@ export class CourierListDataSource extends DataSource<CourierModel> {
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<CourierModel[]> {
     const displayDataChanges = [
+      this.stompService.subscribe('/topic/couriers.updates'),
       this.pageChange,
       this.eventManager.observable.filter(
         event => event.name === MyEvent.COURIER_LIST_MODIFICATION

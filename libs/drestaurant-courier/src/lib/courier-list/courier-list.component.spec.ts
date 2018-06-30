@@ -4,6 +4,7 @@ import { CourierListComponent } from './courier-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { DrestaurantUiModule } from '@d-restaurant-frontend/drestaurant-ui';
+import { StompService, StompConfig, StompRService } from '@stomp/ng2-stompjs';
 
 describe('CourierListComponent', () => {
   let component: CourierListComponent;
@@ -18,6 +19,10 @@ describe('CourierListComponent', () => {
           {
             provide: 'baseURL',
             useValue: 'baseURL'
+          },
+          {
+            provide: StompService,
+            useClass: StompRService
           }
         ]
       }).compileComponents();

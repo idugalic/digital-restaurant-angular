@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://localhost:8080/api'
+  baseURL: 'http://localhost:8080/api',
+  webSocketURL: 'ws://localhost:8080/drestaurant/websocket'
 };
 
 /*

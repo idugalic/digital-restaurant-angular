@@ -60,7 +60,7 @@ Routed feature modules don’t export anything because their components never ap
     - A courier view of an order (managing the delivery of orders)
 
 #### Pub-Sub communication model
-The communication between routed (feature) components is event driven, and based on publish-subscribe model. For example a [customer-create.component](libs/drestaurant-customer/src/lib/customer-create/customer-create.component.ts) will trigger an event on successfull creation of a customer, and [customer-list.component](libs/drestaurant-customer/src/lib/customer-list/customer-list.component.ts) is subscribed to it, so it can re-fetch and refresh a list of customers.
+The communication between routed (feature) components is event driven, and based on publish-subscribe model. For example a [customer-create.component](libs/drestaurant-customer/src/lib/customer-create/customer-create.component.ts) will trigger an event on successfull creation of a customer (or event will be sent over the 'web socket' from the backend), and [customer-list.component](libs/drestaurant-customer/src/lib/customer-list/customer-list.component.ts) is subscribed to it, so it can re-fetch and refresh a list of customers.
 
 ### Widget (UI) feature modules
 A widget module makes components, directives, and pipes available to external modules. Many third-party UI component libraries are widget modules.

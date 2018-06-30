@@ -30,10 +30,16 @@ export class CourierCreateComponent implements OnInit {
   }
 
   private onSaveSuccess(result) {
-    this.eventManager.broadcast({
-      name: MyEvent.COURIER_LIST_MODIFICATION,
-      content: 'OK'
-    });
+    // Note that command for creating a Courier (command side) and materializing the CourierEntity (query side - event handler) can happen in different threads (no transaction). We should wait websocket event from the backend marking that view has been materialized. We are 'eventually' consistent, and we have to handle it accordingly.
+
+    // We do not need to fire event here in order for the list to be refreshed
+    // because: STOMP message will be sent over the WebSocket protocol once the Courier is saved into the database on the backend side
+    // check: 'courier-list.datasource.ts' to see how we subscribe to WebSocket event (Couriers list updated)
+
+    // this.eventManager.broadcast({
+    //   name: MyEvent.COURIER_LIST_MODIFICATION,
+    //   content: 'OK'
+    // });
   }
 
   private onSaveError() {

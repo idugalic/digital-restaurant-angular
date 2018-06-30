@@ -11,6 +11,7 @@ import { PageModel } from './../page.model';
 import { DrestaurantCustomerService } from './drestaurant-customer.service';
 import { EventManager } from './../event-manager.service';
 import { MyEvent } from './../event.model';
+import { StompService } from '@stomp/ng2-stompjs';
 
 export class CustomerListDataSource extends DataSource<CustomerModel> {
   page: PageModel;
@@ -18,7 +19,8 @@ export class CustomerListDataSource extends DataSource<CustomerModel> {
   constructor(
     private customerService: DrestaurantCustomerService,
     private pageChange: Subject<PageEvent>,
-    private eventManager: EventManager
+    private eventManager: EventManager,
+    private stompService: StompService
   ) {
     super();
   }
@@ -26,6 +28,7 @@ export class CustomerListDataSource extends DataSource<CustomerModel> {
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<CustomerModel[]> {
     const displayDataChanges = [
+      this.stompService.subscribe('/topic/customers.updates'),
       this.pageChange,
       this.eventManager.observable.filter(
         event => event.name === MyEvent.CUSTOMER_LIST_MODIFICATION

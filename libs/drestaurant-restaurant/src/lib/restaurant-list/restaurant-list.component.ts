@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantsModel, DrestaurantRestaurantService } from '@d-restaurant-frontend/drestaurant-shared';
 import { Observable } from 'rxjs';
+import { StompService } from '@stomp/ng2-stompjs';
+import {Message} from '@stomp/stompjs';
 
 @Component({
   selector: 'd-restaurant-frontend-restaurant-list',
@@ -10,9 +12,15 @@ import { Observable } from 'rxjs';
 export class RestaurantListComponent implements OnInit {
   restaurants$: Observable<RestaurantsModel>;
 
-  constructor(private restaurantService: DrestaurantRestaurantService) {}
+  constructor(private restaurantService: DrestaurantRestaurantService, private stompService: StompService) { }
 
   ngOnInit() {
-    this.restaurants$ = this.restaurantService.getRestaurants();
+    const dataChanges = [
+      this.stompService.subscribe('/topic/restaurants.updates'),
+    ];
+    this.restaurants$ = Observable
+      .merge(...dataChanges)
+      .startWith(null)
+      .switchMap(event => this.restaurantService.getRestaurants());
   }
 }

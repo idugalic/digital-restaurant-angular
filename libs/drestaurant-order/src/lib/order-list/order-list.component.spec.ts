@@ -4,6 +4,7 @@ import { OrderListComponent } from './order-list.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { DrestaurantUiModule } from '@d-restaurant-frontend/drestaurant-ui';
+import { StompService, StompRService } from '@stomp/ng2-stompjs';
 
 describe('OrderListComponent', () => {
   let component: OrderListComponent;
@@ -18,6 +19,10 @@ describe('OrderListComponent', () => {
           {
             provide: 'baseURL',
             useValue: 'baseURL'
+          },
+          {
+            provide: StompService,
+            useClass: StompRService
           }
         ]
       }).compileComponents();
