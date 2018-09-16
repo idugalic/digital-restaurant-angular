@@ -4,7 +4,7 @@ This project is created for educational purposes only. There is no restaurant ;)
 
 It was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
 
-It is a front-end part of a 'Restaurant Food To Go' solution. It consumes REST API provided by [https://github.com/idugalic/digital-restaurant](https://github.com/idugalic/digital-restaurant)
+It is a front-end part of a 'Restaurant Food To Go' solution. It consumes REST API provided by [https://github.com/idugalic/digital-restaurant/drestaurant-apps/drestaurant-monolith](https://github.com/idugalic/digital-restaurant/tree/master/drestaurant-apps/drestaurant-monolith)
 
 Customers use the website to place food orders at local restaurants. Application/s coordinates a network of couriers who deliver the orders.
 
